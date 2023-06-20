@@ -27,23 +27,17 @@ end
 
 # # ================================= Creators Start ==========================================
 p "Creating creators..."
-artists = []
-# ["Gorillaz", "Lou Reed", "Taylor Swift", "The 1975", "Yeah Yeah Yeahs", "Megadeth", "Horace Andy",
-#   "Arctic Monkeys", "ODESZA", "The Killers", "Cigarettes After Sex", "Flaming Lips",
-#   "Backstreet Boys",
-#   "DJ Khaled", "Ozzy Osbourne",
-#   "Ringo Starr", "Bjork",
-#   "Twenty One Pilots",
-#   "Ibrahim Maalouf",  "RY X",
-#   "Novo Amor", "The Smashing Pumpkins", "Stromae"]
+artists = ["Gorillaz", "Lou Reed", "Taylor Swift", "The 1975", "Yeah Yeah Yeahs", "Megadeth", "Horace Andy",
+  "Arctic Monkeys", "ODESZA", "The Killers", "Cigarettes After Sex", "Flaming Lips", "Backstreet Boys",
+  "DJ Khaled", "Ozzy Osbourne", "Ringo Starr", "Bjork", "Twenty One Pilots", "Ibrahim Maalouf",  "RY X",
+  "Novo Amor", "The Smashing Pumpkins", "Stromae"]
 
 directors = ["Ryan Coogler", "George Miller", "Steven Spielberg", "James Cameron", "Jon Watts", "Gina Prince-Bythewood", "Zach Cregger",  "Castille Landon",
     "David Gordon Green", "Ol Parker", "Bong Joon-ho", "Nicholas Stoller", "Mark Mylod", "Jordan Peele", "Jaume Collet-Serra"]
 
-authors = ["Malcolm Gladwell", "Zadie Smith", "Christine Sinclair"]
-#  "Stephen King", "Ryan Holiday",
-#   "Jamie Oliver", "Michelle Obama", "Jonathan Cahn", "Rupi Kaur", "Randall Munroe",
-#   "Kate Reid", "Gabor Mate", "Imani Perry", "Chuck Klosterman", "Margaret Atwood", "Philip Rosenthal"]
+authors = ["Malcolm Gladwell", "Zadie Smith", "Christine Sinclair", "Stephen King", "Ryan Holiday",
+  "Jamie Oliver", "Michelle Obama", "Jonathan Cahn", "Rupi Kaur", "Randall Munroe",
+  "Kate Reid", "Gabor Mate", "Imani Perry", "Chuck Klosterman", "Margaret Atwood", "Philip Rosenthal"]
 
 p "Creating authors..."
 authors.each do |author|
@@ -105,8 +99,8 @@ Creator.all.each do |creator|
   followed_creator.creator = creator
   followed_creator.save
 end
-# # ================================= Books Start ==========================================
 
+# # ================================= Books Start ==========================================
 p "Creating books"
 authors.each do |author|
   search = URI.open("https://www.googleapis.com/books/v1/volumes?q=inauthor:#{author}&orderBy=newest&num=1&langRestrict=en&key=#{ENV["GOOGLE_KEY"]}").read
