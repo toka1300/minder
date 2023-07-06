@@ -1,41 +1,26 @@
-  <div class="buttoner">
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <%= image_tag("carousel-icon-prev.svg") %>
-      <span class="visually-hidden">Previous</span>
-    </button>
-  </div>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval= "3000">
-      <%# <img src="https://c4.wallpaperflare.com/wallpaper/98/689/83/pink-floyd-prism-album-covers-cover-art-wallpaper-preview.jpg" class="d-block w-100" alt="..."> %>
-      <%# link_to music_path(@pictures[0]) do %>
-      <h2 class="card-texter"><em>Midnight Scorchers</em></h2>
-        <%= image_tag("horace-andy.jpg", class: "d-block w-100") %>
-      <%# end %>
+    <div class="carousel-item active">
+      <%= image_tag("horace-andy.jpg", class: "d-block w-100") %>
     </div>
-    <div class="carousel-item" data-bs-interval= "3000">
-      <%# <img src="https://i.pinimg.com/736x/97/9d/8c/979d8ceba4a26c5f414bf17b5e0c3314.jpg" class="d-block w-100" alt="..."> %>
-      <%# link_to music_path(@pictures[1]) do %>
-      <h2 class="card-texter"><em>Being Funny in a Foreign Language</em></h2>
-        <%= image_tag("1975.jpg", class: "d-block w-100") %>
-      <%# end %>
+    <div class="carousel-item">
+      <%= image_tag("horace-andy.jpg", class: "d-block w-100") %>
     </div>
-    <div class="carousel-item " data-bs-interval= "3000">
-      <%# <img src="https://c4.wallpaperflare.com/wallpaper/877/441/266/music-album-covers-led-zeppelin-wallpaper-preview.jpg" class="d-block w-100" alt="..."> %>
-      <%# link_to music_path(@pictures[2]) do %>
-      <h2 class="card-texter"><em>Cool it Down</em></h2>
-        <%= image_tag("yeah.jpg", class: "d-block w-100") %>
-      <%# end %>
+    <div class="carousel-item">
+      <%= image_tag("horace-andy.jpg", class: "d-block w-100") %>
     </div>
   </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <%= image_tag("carousel-icon-next.svg") %>
-    <span class="visually-hidden">Next</span>
-  </button>
