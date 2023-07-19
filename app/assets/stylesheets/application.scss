@@ -11,6 +11,9 @@
 @import "components/index";
 @import "pages/index";
 
+body {
+  min-width: fit-content
+}
 
 .fullpage {
   min-height: 86.5vh;
