@@ -1,0 +1,19 @@
+databases:
+  - name: minder
+    ipAllowList: []
+    databaseName: minderdb
+    user: casey
+
+services:
+  - type: web
+    name: minder
+    env: ruby
+    buildCommand: "./render-build.sh"
+    startCommand: "bundle exec rails s"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: minder
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
