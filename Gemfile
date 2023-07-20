@@ -62,8 +62,8 @@ gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "noticed"
 gem 'acts_as_favoritor'
-# gem 'bootstrap-sass', '~> 3.2.0'
-gem 'bootstrap', '~> 5.3.0.alpha3'
+gem "bootstrap", "~> 5.2"
+gem "sassc-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
