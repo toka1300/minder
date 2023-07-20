@@ -28,12 +28,8 @@ end
 # # ================================= Creators Start ==========================================
 p "Creating creators..."
 artists = ["Gorillaz", "Lou Reed", "Taylor Swift", "The 1975", "Yeah Yeah Yeahs", "Megadeth", "Horace Andy",
-  "Arctic Monkeys", "ODESZA", "The Killers", "Cigarettes After Sex", "Flaming Lips",
-  "Backstreet Boys",
-  "DJ Khaled", "Ozzy Osbourne",
-  "Ringo Starr", "Bjork",
-  "Twenty One Pilots",
-  "Ibrahim Maalouf",  "RY X",
+  "Arctic Monkeys", "ODESZA", "The Killers", "Cigarettes After Sex", "Flaming Lips", "Backstreet Boys",
+  "DJ Khaled", "Ozzy Osbourne", "Ringo Starr", "Bjork", "Twenty One Pilots", "Ibrahim Maalouf",  "RY X",
   "Novo Amor", "The Smashing Pumpkins", "Stromae"]
 
 directors = ["Ryan Coogler", "George Miller", "Steven Spielberg", "James Cameron", "Jon Watts", "Gina Prince-Bythewood", "Zach Cregger",  "Castille Landon",
@@ -103,8 +99,8 @@ Creator.all.each do |creator|
   followed_creator.creator = creator
   followed_creator.save
 end
-# # ================================= Books Start ==========================================
 
+# # ================================= Books Start ==========================================
 p "Creating books"
 authors.each do |author|
   search = URI.open("https://www.googleapis.com/books/v1/volumes?q=inauthor:#{author}&orderBy=newest&num=1&langRestrict=en&key=#{ENV["GOOGLE_KEY"]}").read
@@ -112,7 +108,7 @@ authors.each do |author|
   isbn = response["items"][0]["volumeInfo"]["industryIdentifiers"][0]["identifier"]
   poster = ""
   begin
-    results = RestClient.get("https://api2.isbndb.com/book/#{isbn}", headers={"Authorization" => "48314_72662961febf77ecb4b86a768b7ca6dc"})
+    results = RestClient.get("https://api2.isbndb.com/book/#{isbn}", headers={"Authorization" => "50005_da8beb2efdd07d6955f154720bb66bcd"})
     poster = JSON.parse(results)["book"]["image"]
   rescue
     poster = "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1376&q=80"
@@ -126,23 +122,21 @@ authors.each do |author|
   )
 end
 
-authors.each do |author|
-  search = URI.open("https://www.googleapis.com/books/v1/volumes?q=inauthor:#{author}&orderBy=newest&num=1&langRestrict=en&key=#{ENV["GOOGLE_KEY"]}").read
-  response = JSON.parse(search)
-  isbn = response["items"][0]["volumeInfo"]["industryIdentifiers"][0]["identifier"]
-  isbn
-  begin
-    results = RestClient.get("https://api2.isbndb.com/book/#{isbn}", headers={"Authorization" => "48314_72662961febf77ecb4b86a768b7ca6dc"})
-    author
-    JSON.parse(results)["book"]["image"]
-  rescue
-    p "Could not find #{author}"
-  end
-end
+# authors.each do |author|
+#   search = URI.open("https://www.googleapis.com/books/v1/volumes?q=inauthor:#{author}&orderBy=newest&num=1&langRestrict=en&key=#{ENV["GOOGLE_KEY"]}").read
+#   response = JSON.parse(search)
+#   isbn = response["items"][0]["volumeInfo"]["industryIdentifiers"][0]["identifier"]
+#   begin
+#     results = RestClient.get("https://api2.isbndb.com/book/#{isbn}", headers={"Authorization" => "50005_da8beb2efdd07d6955f154720bb66bcd"})
+#     author
+#     JSON.parse(results)["book"]["image"]
+#   rescue
+#     p "Could not find #{author}"
+#   end
+# end
 
 # =======================Getting upcoming albums for creators===============================
 p "Finding upcoming albums for creators..."
-
 
 for page in 1..11
   i = 1
@@ -234,10 +228,3 @@ for i in 1..10
     end
   end
 end
-
-album = Album.new
-album.poster_url = ActionController::Base.helpers.image_path('back-img.png')
-album.release_date = "2022-10-14"
-album.name = "A Very Backstreet Christmas"
-album.creator = Creator.where(name: "Backstreet Boys")[0]
-album.save!

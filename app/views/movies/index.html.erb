@@ -27,9 +27,11 @@
             <div class="cardie-trip">
               <div data-controller="movie-index">
                 <% if current_user.favorited?(movie) %>
-                  <%= link_to custom_unfav_path(movie), data: { turbo_method: :post } do %>
+                <%#
+                  <%= link_to custom_unfav_path(movie), data: { turbo_method: :post } do 
                     <i class="fa-solid fa-heart btn-heart-checked" data-action="click->movie-index#favorite"></i>
-                  <% end %>
+                  <% end
+                %>
                 <% else %>
                   <%= link_to favorite_movie_path(movie), data: { turbo_method: :post } do %>
                     <i class="fa-solid fa-heart btn-heart-unchecked" data-action="click->movie-index#favorite"></i>
