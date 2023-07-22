@@ -17,3 +17,12 @@ services:
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: REDIS_URL
+        fromService:
+        name: git-scm-redis
+        type: redis
+        property: connectionString
+        
+  - name: git-scm-redis
+    type: redis
+    ipAllowList: []
