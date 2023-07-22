@@ -1,15 +1,14 @@
 databases:
   - name: minder
-    ipAllowList: []
-    databaseName: minderdb
+    databaseName: minder
     user: casey
 
 services:
   - type: web
     name: minder
-    env: ruby
-    buildCommand: "./render-build.sh"
-    startCommand: "bundle exec rails s"
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
