@@ -7,18 +7,13 @@ databases:
 services:
   - type: web
     name: minder
-    runtime: ruby
-    buildCommand: "./bin/render-build.sh"
+    env: ruby
+    buildCommand: "./render-build.sh"
     startCommand: "bundle exec rails s"
     envVars:
-      - key: RAILS_MASTER_KEY
-        sync: false
       - key: DATABASE_URL
         fromDatabase:
-          name: minder
+          name: postgres
           property: connectionString
-      - type: redis
-        name: redis
-        ipAllowList: []
-        plan: free
-        maxmemoryPolicy: noeviction
+      - key: RAILS_MASTER_KEY
+        sync: false
