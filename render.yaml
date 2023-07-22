@@ -1,5 +1,6 @@
 databases:
-  - name: minder
+  - name: postgres
+    ipAllowList: []
     databaseName: minder
     user: casey
 
@@ -7,12 +8,17 @@ services:
   - type: web
     name: minder
     runtime: ruby
-    buildCommand: ".bin//render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    buildCommand: "./bin//render-build.sh"
+    startCommand: "bundle exec rails s"
     envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
       - key: DATABASE_URL
         fromDatabase:
           name: minder
           property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
+      - type: redis
+        name: redis
+        ipAllowList: []
+        plan: free
+        maxmemoryPolicy: noeviction
