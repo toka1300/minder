@@ -3,7 +3,7 @@ databases:
     ipAllowList: []
     databaseName: minder
     user: casey
-    type: free
+    plan: free
 
 services:
   - type: web
